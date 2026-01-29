@@ -100,6 +100,8 @@ This project is open source and available for personal and educational use.
 
 ## Author
 
+**Developed by Harsha Madushan**
+
 Created for learning Chrome extension development with Manifest V3.
 
 ## Support

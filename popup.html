@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Auto Refresh</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🔄 Smart Auto Refresh</h1>
+      </header>
+
+      <div class="mode-selector">
+        <label>
+          <input type="radio" name="mode" value="fixed" checked />
+          <span>Fixed Interval</span>
+        </label>
+        <label>
+          <input type="radio" name="mode" value="custom" />
+          <span>Custom Time</span>
+        </label>
+        <label>
+          <input type="radio" name="mode" value="random" />
+          <span>Random</span>
+        </label>
+      </div>
+
+      <!-- Tab Selection -->
+      <div class="tab-selector">
+        <label>
+          <input type="radio" name="tabMode" value="current" checked />
+          <span>Current Tab</span>
+        </label>
+        <label>
+          <input type="radio" name="tabMode" value="all" />
+          <span>All Tabs</span>
+        </label>
+      </div>
+
+      <!-- Fixed Interval Mode -->
+      <div class="input-section" id="fixedSection">
+        <div class="input-group">
+          <label for="seconds">Interval (seconds):</label>
+          <input
+            type="number"
+            id="seconds"
+            min="30"
+            max="3600"
+            value="30"
+            placeholder="Min: 30 seconds"
+          />
+          <small class="hint-text">⚠ Minimum: 30 seconds (Chrome limitation)</small>
+        </div>
+      </div>
+
+      <!-- Custom Time Mode -->
+      <div class="input-section hidden" id="customSection">
+        <div class="time-inputs">
+          <div class="time-group">
+            <label>Hours</label>
+            <input type="number" id="hours" min="0" max="23" value="0" placeholder="00" />
+          </div>
+          <div class="time-separator">:</div>
+          <div class="time-group">
+            <label>Minutes</label>
+            <input type="number" id="minutes" min="0" max="59" value="0" placeholder="00" />
+          </div>
+          <div class="time-separator">:</div>
+          <div class="time-group">
+            <label>Seconds</label>
+            <input type="number" id="customSeconds" min="0" max="59" value="30" placeholder="00" />
+          </div>
+        </div>
+        <small class="hint-text">⚠ Total must be ≥ 30 seconds</small>
+      </div>
+
+      <!-- Random Mode -->
+      <div class="input-section hidden" id="randomSection">
+        <div class="input-group">
+          <label for="minSeconds">Min (seconds):</label>
+          <input
+            type="number"
+            id="minSeconds"
+            min="30"
+            max="3600"
+            value="30"
+            placeholder="Min: 30 seconds"
+          />
+        </div>
+        <div class="input-group">
+          <label for="maxSeconds">Max (seconds):</label>
+          <input
+            type="number"
+            id="maxSeconds"
+            min="1"
+            max="3600"
+            value="60"
+            placeholder="Max interval"
+          />
+        </div>
+      </div>
+
+      <!-- Countdown Display -->
+      <div class="countdown-section">
+        <div class="countdown-label">Next Refresh In:</div>
+        <div class="countdown-display" id="countdown">--:--:--</div>
+        <div class="status-text" id="statusText">Stopped</div>
+      </div>
+
+      <!-- Control Buttons -->
+      <div class="controls">
+        <button id="startBtn" class="btn btn-start">▶ Start</button>
+        <button id="pauseBtn" class="btn btn-pause hidden">⏸ Pause</button>
+        <button id="stopBtn" class="btn btn-stop" disabled>⏹ Stop</button>
+        <button id="refreshBtn" class="btn btn-refresh">🔄 Refresh Now</button>
+      </div>
+
+      <footer>
+        <p class="footer-text">Smart Auto Refresh v1.0</p>
+        <p class="footer-text" style="font-size: 10px; margin-top: 4px;">Developed by Harsha Madushan</p>
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
